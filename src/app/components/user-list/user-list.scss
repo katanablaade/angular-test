@@ -1,0 +1,30 @@
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.user-list-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #eef;
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+h2 {
+  margin-bottom: 20px;
+}

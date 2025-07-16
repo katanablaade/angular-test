@@ -1,0 +1,20 @@
+@let state = users$ | async; @if (state !== null && state !== 'error') {
+<div class="container">
+  <h2>Пользователь</h2>
+  <ul class="user-list">
+    @for (user of state; track user.id) {
+    <li (click)="viewDetail(user.id)" class="user-list-item">
+      {{ user.firstName }}
+    </li>
+    }
+  </ul>
+</div>
+} @else {
+<div class="container">
+  @switch (state) { @case (null) {
+  <app-spinner />
+  } @case ('error') {
+  <app-error />
+  } }
+</div>
+}

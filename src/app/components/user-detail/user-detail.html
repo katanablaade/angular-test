@@ -1,0 +1,16 @@
+@let state = user$ | async; @if (state !== null && state !== 'error') {
+<div class="container">
+  <h2>{{ state.firstName }}</h2>
+  <p>Email: {{ state.email }}</p>
+  <p>Gender: {{ state.gender }}</p>
+  <p>Phone: {{ state.phone }}</p>
+</div>
+} @else {
+<div class="container">
+  @switch (state) { @case (null) {
+  <app-spinner />
+  } @case ('error') {
+  <app-error />
+  } }
+</div>
+}
