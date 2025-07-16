@@ -1,1 +1,3 @@
-<router-outlet></router-outlet>
+@if (posts$ | async; as posts) { @for (post of posts; track post.id) {
+<div>{{ post.title }}</div>
+} }

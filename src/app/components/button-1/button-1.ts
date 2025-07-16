@@ -4,7 +4,7 @@ import { AtributeSelector } from '../atribute-selector/atribute-selector';
 
 @Component({
   selector: 'app-button-1',
-  imports: [[AtributeSelector]],
+  imports: [AtributeSelector],
   templateUrl: './button-1.html',
   styleUrl: './button-1.scss',
 })
