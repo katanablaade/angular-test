@@ -1,20 +1,16 @@
-@let state = users$ | async; @if (state !== null && state !== 'error') {
+@if (isLoading()) {
+<app-spinner />
+} @else if (isError()) {
+<app-error />
+} @else {
 <div class="container">
-  <h2>Пользователь</h2>
+  <h2>Пользователи</h2>
   <ul class="user-list">
-    @for (user of state; track user.id) {
-    <li (click)="viewDetail(user.id)" class="user-list-item">
+    @for (user of users(); track user.id) {
+    <li (click)="router.navigate(['/users', user.id])" class="user-list-item">
       {{ user.firstName }}
     </li>
     }
   </ul>
-</div>
-} @else {
-<div class="container">
-  @switch (state) { @case (null) {
-  <app-spinner />
-  } @case ('error') {
-  <app-error />
-  } }
 </div>
 }

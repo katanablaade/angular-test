@@ -1,16 +1,14 @@
-@let state = user$ | async; @if (state !== null && state !== 'error') {
+@if (isLoading()) {
+<app-spinner />
+} @else if (isError()) {
+<app-error />
+} @else if (user()) {
 <div class="container">
-  <h2>{{ state.firstName }}</h2>
-  <p>Email: {{ state.email }}</p>
-  <p>Gender: {{ state.gender }}</p>
-  <p>Phone: {{ state.phone }}</p>
+  <h2>{{ user()!.firstName }}</h2>
+  <p>Email: {{ user()!.email }}</p>
+  <p>Gender: {{ user()!.gender }}</p>
+  <p>Phone: {{ user()!.phone }}</p>
 </div>
 } @else {
-<div class="container">
-  @switch (state) { @case (null) {
-  <app-spinner />
-  } @case ('error') {
-  <app-error />
-  } }
-</div>
+<p>Пользователь не найден</p>
 }

@@ -6,6 +6,4 @@ export interface User {
   phone: string;
 }
 
-export interface UsersResponse {
-  users: User[];
-}
+export type LoadState<T> = T | 'loading' | 'error';
