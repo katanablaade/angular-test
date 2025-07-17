@@ -11,16 +11,18 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<LoadState<User[]>> {
-    return this.http
-      .get<{ users: User[] }>(`${this.apiUrl}/users?limit=200`)
-      .pipe(
-        map((res) => res.users),
-        catchError((err) => {
-          console.error('Ошибка при загрузке пользователей', err);
-          return of('error' as const);
-        })
-      );
+  getUsers(searchQuery: string): Observable<LoadState<User[]>> {
+    let url = `${this.apiUrl}/users?limit=200`;
+    if (searchQuery) {
+      url = `${this.apiUrl}/users/search?q=${searchQuery}`;
+    }
+    return this.http.get<{ users: User[] }>(url).pipe(
+      map((res) => res.users),
+      catchError((err) => {
+        console.error('Ошибка при загрузке пользователей', err);
+        return of('error' as const);
+      })
+    );
   }
 
   getUserById(id: number): Observable<LoadState<User>> {

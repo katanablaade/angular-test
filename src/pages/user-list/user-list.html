@@ -1,4 +1,12 @@
-@if (isLoading()) {
+<div class="container">
+  <app-search-input
+    [value]="searchQuery()"
+    (valueChange)="onSearch($event)"
+    placeholder="Поиск по имени"
+  />
+</div>
+
+@if (isLoading() || isSearching()) {
 <app-spinner />
 } @else if (isError()) {
 <app-error />
@@ -8,7 +16,7 @@
   <ul class="user-list">
     @for (user of users(); track user.id) {
     <li (click)="router.navigate(['/users', user.id])" class="user-list-item">
-      {{ user.firstName }}
+      {{ user.firstName }} {{ user.lastName }}
     </li>
     }
   </ul>

@@ -6,12 +6,10 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { EMPTY, map, Observable } from 'rxjs';
-import { User } from '../../types/types';
 import { CommonModule } from '@angular/common';
-import { SpinnerComponent } from '../spinner/spinner';
-import { ErrorComponent } from '../error/error';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { SpinnerComponent } from '../../components/spinner/spinner';
+import { ErrorComponent } from '../../components/error/error';
 
 @Component({
   selector: 'app-user-detail',
